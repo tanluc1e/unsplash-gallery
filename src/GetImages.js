@@ -8,7 +8,7 @@ export default function GetImages() {
   useEffect(() => {
     const fetchImages = async () => {
       const response = await fetch(
-        `https://api.unsplash.com/photos?client_id=${process.env.REACT_APP_API_KEY}`
+        `https://api.unsplash.com/photos?client_id=${process.env.REACT_APP_API_KEY}&count=300`
       );
       const data = await response.json();
       setImages(data);
