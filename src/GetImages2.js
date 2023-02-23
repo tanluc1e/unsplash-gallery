@@ -6,11 +6,9 @@ import lgZoom from "lightgallery/plugins/zoom";
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
-import GetImages2 from "./GetImages2";
-import GetImages3 from "./GetImages3";
 // import { Link } from "react-router-dom"
 
-export default function GetImages() {
+export default function GetImages2() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -45,17 +43,12 @@ export default function GetImages() {
           </section>
         )}
       </div> */}
-
-      <div className="row">
-        <div className="col-sm-4 mb-lg-0">
-          <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
-            {images.map((image) => (
-              <Article key={image.id} {...image} />
-            ))}
-          </LightGallery>
-        </div>
-        <GetImages2 />
-        <GetImages3 />
+      <div className="col-sm-4 mb-lg-0">
+        <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
+          {images.map((image) => (
+            <Article key={image.id} {...image} />
+          ))}
+        </LightGallery>
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import Loading from "./Loading";
 
 export default function Profile() {
   const [person, setPerson] = useState([]);
@@ -21,7 +22,7 @@ export default function Profile() {
   return (
     <>
       {person.id == null ? (
-        <div>Loading...</div>
+        <Loading />
       ) : (
         <section className="showcase">
           ;
