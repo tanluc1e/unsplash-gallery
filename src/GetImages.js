@@ -6,8 +6,6 @@ import lgZoom from "lightgallery/plugins/zoom";
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
-import GetImages2 from "./GetImages2";
-import GetImages3 from "./GetImages3";
 // import { Link } from "react-router-dom"
 
 export default function GetImages() {
@@ -28,34 +26,84 @@ export default function GetImages() {
 
   return (
     <>
-      {/* <div className="container mx-auto px-5">
+      <div className="container mx-auto px-5">
         {!images ? (
           <div>
             <h1>Loading...</h1>
           </div>
         ) : (
           <section>
-            <div className="row g-2">
-              <div className="col-6">
-                {images.map((image) => (
-                  <Article2 key={image.id} {...image} />
-                ))}
+            <div className="row">
+              <div className="col-sm-4 mb-lg-0">
+                <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
+                  {images.map((image) => (
+                    <Article key={image.id} {...image} />
+                  ))}
+                </LightGallery>
               </div>
+              <GetImages2 />
+              <GetImages3 />
             </div>
           </section>
         )}
-      </div> */}
+      </div>
+    </>
+  );
+}
 
-      <div className="row">
-        <div className="col-sm-4 mb-lg-0">
-          <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
-            {images.map((image) => (
-              <Article key={image.id} {...image} />
-            ))}
-          </LightGallery>
-        </div>
-        <GetImages2 />
-        <GetImages3 />
+export function GetImages2() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      const response = await fetch(
+        `https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_API_KEY}&count=10`
+      );
+      const data = await response.json();
+      setImages(data);
+      console.log(data);
+    };
+
+    fetchImages();
+  }, []);
+
+  return (
+    <>
+      <div className="col-sm-4 mb-lg-0">
+        <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
+          {images.map((image) => (
+            <Article key={image.id} {...image} />
+          ))}
+        </LightGallery>
+      </div>
+    </>
+  );
+}
+
+export function GetImages3() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      const response = await fetch(
+        `https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_API_KEY}&count=10`
+      );
+      const data = await response.json();
+      setImages(data);
+      console.log(data);
+    };
+
+    fetchImages();
+  }, []);
+
+  return (
+    <>
+      <div className="col-sm-4 mb-lg-0">
+        <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
+          {images.map((image) => (
+            <Article key={image.id} {...image} />
+          ))}
+        </LightGallery>
       </div>
     </>
   );

@@ -11,7 +11,7 @@ export default function Article({
 }) {
   return (
     <>
-      <a href={urls.regular}>
+      <a href={urls.regular} data-sub-html={alt_description}>
         <img
           className="w-100 mb-2 mb-md-4 shadow-1-strong rounded"
           alt={user.username}
